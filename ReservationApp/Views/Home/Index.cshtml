@@ -1,6 +1,10 @@
 ﻿@{
     ViewBag.Title = "Home Page";
-    var reservations = ViewBag.reservations;
+    var totalReservations = ViewBag.totalReservations;
+    var availableFlatbeds = ViewBag.availableFlatbeds;
+    var availableReefers = ViewBag.availableReefers;
+    var availableDryVans = ViewBag.availableDryVans;
+    
     
 }
 
@@ -13,5 +17,8 @@
 </div>
 
 <div class="row">
-    <p>There are currently @reservations.</p>
+    <p>There are currently @totalReservations total trailers on the yard.</p>
+    <p>There are currently @availableDryVans available Dry Vans ready for rent.</p>
+    <p>There are currently @availableReefers available Reefers ready for rent.</p>
+    <p>There are currently @availableFlatbeds available Flatbeds ready for rent.</p>
 </div>

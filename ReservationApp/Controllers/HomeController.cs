@@ -12,8 +12,10 @@ namespace ReservationApp.Controllers
         public ActionResult Index()
         {
             var repository = new ReservationRepository();
-            var reservations = repository.AllReservations();
-            ViewBag.reservations = reservations.Count();
+            ViewBag.totalReservations = repository.AllReservations().Count();
+            ViewBag.availableDryVans = repository.AvailableDryVans().Count();
+            ViewBag.availableFlatBeds = repository.AvailableFlatBeds().Count();
+            ViewBag.availableReefers = repository.AvailableReefers().Count();
             return View();
         }
 
