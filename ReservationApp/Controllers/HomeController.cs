@@ -16,6 +16,7 @@ namespace ReservationApp.Controllers
             ViewBag.availableDryVans = repository.AvailableDryVans().Count();
             ViewBag.availableFlatBeds = repository.AvailableFlatBeds().Count();
             ViewBag.availableReefers = repository.AvailableReefers().Count();
+            ViewBag.CustomerNames = repository.CustomerNames();
             return View();
         }
 

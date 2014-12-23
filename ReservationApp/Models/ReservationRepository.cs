@@ -11,36 +11,53 @@ namespace ReservationApp.Models
     {
         string dbPath = @"Data Source = C:\Users\Matthew\Documents\visual studio 2013\Projects\ReservationApp\reservations.db; Version = 3;";
 
-        public IEnumerable<Reservation> AllReservations()
+        public IEnumerable<Inventory> AllReservations()
         {
             var connection = new SQLiteConnection(dbPath);
             connection.Open();
-            var reservations = connection.Query<Reservation>("select * from reservations");
+            var reservations = connection.Query<Inventory>("select * from inventory");
             return reservations;
         }
 
-        public IEnumerable<Reservation> AvailableDryVans()
+        public IEnumerable<Inventory> AvailableDryVans()
         {
             var connection = new SQLiteConnection(dbPath);
             connection.Open();
-            var DryVans = connection.Query<Reservation>("select * from reservations where status != 'major' and type == 'dry_van'");
+            var DryVans = connection.Query<Inventory>("select * from inventory where status != 'major' and type == 'dry_van' and reserved == 0");
             return DryVans;
         }
 
-        public IEnumerable<Reservation> AvailableReefers()
+        public IEnumerable<Inventory> AvailableReefers()
         {
             var connection = new SQLiteConnection(dbPath);
             connection.Open();
-            var Reefers = connection.Query<Reservation>("select * from reservations where status != 'major' and type == 'reefer'");
+            var Reefers = connection.Query<Inventory>("select * from inventory where status != 'major' and type == 'reefer' and reserved == 0");
             return Reefers;
         }
 
-        public IEnumerable<Reservation> AvailableFlatBeds()
+        public IEnumerable<Inventory> AvailableFlatBeds()
         {
             var connection = new SQLiteConnection(dbPath);
             connection.Open();
-            var FlatBeds = connection.Query<Reservation>("select * from reservations where status != 'major' and type == 'flatbed'");
+            var FlatBeds = connection.Query<Inventory>("select * from inventory where status != 'major' and type == 'flatbed' and reserved == 0");
             return FlatBeds;
         }
+
+        public IEnumerable<String> CustomerNames()
+        {
+            var connection = new SQLiteConnection(dbPath);
+            connection.Open();
+            var names = connection.Query<String>("select distinct customer_name from reservations");
+            return names;
+        }
+
+        public IEnumerable<Reservations> CustomerReservations()
+        {
+            var connection = new SQLiteConnection(dbPath);
+            connection.Open();
+            var reservationcounts = connection.Query<Reservations>("select * from reservations order by");
+            return reservationcounts;
+        }
+
     }
 }

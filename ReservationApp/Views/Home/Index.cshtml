@@ -4,6 +4,8 @@
     var availableFlatbeds = ViewBag.availableFlatbeds;
     var availableReefers = ViewBag.availableReefers;
     var availableDryVans = ViewBag.availableDryVans;
+    var CustomerNames = String.Join(", ", ViewBag.CustomerNames);
+
     
     
 }
@@ -21,4 +23,6 @@
     <p>There are currently @availableDryVans available Dry Vans ready for rent.</p>
     <p>There are currently @availableReefers available Reefers ready for rent.</p>
     <p>There are currently @availableFlatbeds available Flatbeds ready for rent.</p>
+    <p>The Customers are @CustomerNames</p>
+
 </div>
